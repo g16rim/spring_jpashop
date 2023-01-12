@@ -1,6 +1,8 @@
 package jpabook.jpashop.domain;
 
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
@@ -8,9 +10,11 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
+
 @Getter @Setter
 @Table(name = "orders")
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
+@Entity
 public class Order {
 
     @Id @GeneratedValue
@@ -80,7 +84,7 @@ public class Order {
     public int getTotalPrice() {
         int totalPrice = 0;
         for (OrderItem orderItem : orderItems) {
-            totalPrice += orderItem.getOrderPrice();
+            totalPrice += orderItem.getTotalPrice(); // getOrderPrice()가 아니라 getTotalPrice()로 수정
         }
         return totalPrice;
     }
