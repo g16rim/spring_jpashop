@@ -23,8 +23,8 @@ public abstract class Item {
     private int price;
     private int stockQuantity;
 
-    @ManyToMany(mappedBy = "items")
-    private List<Category> categories = new ArrayList<Category>();
+//    @ManyToMany(mappedBy = "items")
+//    private List<Category> categories = new ArrayList<Category>();
 
     //==비즈니스 로직==// setter가 아니라 이렇게 이용
     /**

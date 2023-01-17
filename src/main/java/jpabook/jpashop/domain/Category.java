@@ -18,16 +18,17 @@ public class Category {
 
     private String name;
 
-    @ManyToMany
-    @JoinTable(name = "category_item",
-        joinColumns = @JoinColumn(name = "category_id"),
-        inverseJoinColumns = @JoinColumn(name = "item_id"))
-    private List<Item> items = new ArrayList<>();
+//    @ManyToMany
+//    @JoinTable(name = "category_item",
+//        joinColumns = @JoinColumn(name = "category_id"),
+//        inverseJoinColumns = @JoinColumn(name = "item_id"))
+//    private List<Item> items = new ArrayList<>();
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "parent_id")
     private Category parent;
 
+    //자기참조? 실제로도 쓰긴 씀(규모가 작을 때)
     @OneToMany(mappedBy = "parent")
     private List<Category> child = new ArrayList<>();
 
